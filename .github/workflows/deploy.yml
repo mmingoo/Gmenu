@@ -1,13 +1,26 @@
-name : Github Actions 실행시켜보기
+# 하나의 workflow 단위
 
-on :
+# workflow 이름
+name: Github Actions 실행시켜보기
+
+# 어떤 시점에, 어떤 경우에 해당 workflow를 실행시키고 싶은지
+# main에 push가 됐을 때 workflow를 실행시키고 싶다.
+on:
   push:
        branches:
          - main
 
+# 하나의 workflow는 한 개 이상의 job으로 구성된다.
+# 여러 job은 기본적으로 병렬적으로 수행한다.
 jobs:
+
+  # 하나의 Job에 대한 식별자
   My-Deploy-job:
-    runs-on:  ubunti-latest
+
+    # 최신의 우분투 버전에서 실행시킨다.
+    runs-on:  ubuntu-latest
 
     steps:
+      # job의 이름
       - name : Hello World 찍기
+        run: echo "Hello"
