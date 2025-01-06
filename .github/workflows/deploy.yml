@@ -27,16 +27,13 @@
 #        run: echo "Hello"
 
 name: GAJI Service Dev CI/CD
-
 on:
   push:
     branches:
       - "main"
-
 jobs:
   build-docker-image:
     runs-on: ubuntu-latest
-
     steps:
       - name: Deploy to server 성공 !
         uses: appleboy/ssh-action@v1.0.3
@@ -45,29 +42,15 @@ jobs:
           username: ubuntu
           key: ${{ secrets.EC2_PRIVATE_KEY }}
           script: |
-          # ec2 접속해서 해당 경로로 이동
             cd /home/ubuntu/instargram-server
-                    
-          # 깃허브 코드 가져오기
             git pull origin main
-            
-          # application.yml 파일 생성 및 내용 추가
             rm -rf src/main/resources/application.yml
             mkdir -p src/main/resources
             touch src/main/resources/application.yml
             echo "${{ secrets.YML }}" > src/main/resources/application.yml
-            
-            # application.yml 파일 생성 확인
             ls -l src/main/resources/application.yml
-            
-            # 기존에 실행되돈 서비스 끔  // true를 적어줘서 8080에 돌아가지 않으면 에러로 인식 > 서버가 없어서 에로로 뜨더라도 성공으로 인식해
             sudo fuser -k -n tcp 8080 || true
-
             chmod +x ./gradlew
-            # 빌드 새로 하고
             ./gradlew clean build
-            
             cd build/libs
-           # 표준 출력
-           # > ./output.log 2>&1 &   :  프로젝트 실행시킬 때 생성되는 로그들을 > ./output.log에 남겨줘
             nohup java -jar *.SNAPSHOT.jar > ./output.log 2>&1 &
