@@ -12,8 +12,8 @@ import java.util.List;
 
 @Repository
 public class Crawl {
-    List<String> menuList = new ArrayList<>();
-    List<String> dateList = new ArrayList<>();
+        List<String> menuList = new ArrayList<>();
+        List<String> dateList = new ArrayList<>();
     public List<String> crawlDate(String pageurl) throws IOException {
     Elements rows = crawl(pageurl);
         return selectDate(rows);
