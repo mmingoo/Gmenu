@@ -14,7 +14,7 @@ jobs:
           username: ubuntu
           key: ${{ secrets.EC2_PRIVATE_KEY }}
           script: |
-          # 프로젝트 디렉토리로 이동
+            # 프로젝트 디렉토리로 이동
             cd /home/ubuntu/Gmenu
             
             # main 브랜치의 최신 변경사항 가져오기
