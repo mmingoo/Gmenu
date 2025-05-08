@@ -63,6 +63,8 @@
 - **Model**: Entity 클래스, Repository, Service 계층을 통해 데이터 처리 및 비즈니스 로직 구현
 - **View**: Thymeleaf 템플릿을 사용하여 사용자 인터페이스 구현
 - **Controller**: 클라이언트 요청을 받아 적절한 서비스 계층으로 전달하고 결과를 View로 반환
+  ![image](https://github.com/user-attachments/assets/83022bd2-1f5d-404c-8c68-b7272a923fd9)
+
 
 ## 크롤링 소스
 - 제3생활관: https://www.gachon.ac.kr/kor/7350/subview.do
